@@ -1,4 +1,5 @@
 <?php include_once 'config.php'; ?>
+<?php include_once 'functions.php'; ?>
 
 <!-- Access namespace class -->
 <?php
@@ -25,7 +26,7 @@ if($page==0){
 }
 
 // number per page
-$npp = 10;
+$npp = 8;
 
 ?>
 
@@ -51,12 +52,15 @@ $npp = 10;
                                 </div>
                                 <!-- Site Title end-->
 
+                                <!-- start table for view products -->
+                                
                                 <table class="table" style="color: whitesmoke ;">
                                   <tr>
                                     <th>Category:</th>
                                     <th>Media:</th>
                                     <th>Title:</th>
                                     <th>Release date</th>
+                                    <th></th>   
                                   </tr>
 
                                     <!-- second part of pagination -> find all media and find total pages -->
@@ -83,6 +87,13 @@ $npp = 10;
                                             <td><?php echo $product->media_name; ?></td>
                                             <td><?php echo $product->title; ?></td>
                                             <td><?php echo isset($product->release_date) ? $product->release_date : 'No information'; ?></td>
+                                            <td>
+                                                <form action="detach.php" method="post">
+                                                    <input type="hidden" name="user_id" value="<?php echo $_COOKIE['user_id']; ?>">
+                                                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
+                                                    <input type="submit" value="Detach" class="btn btn-danger">
+                                                </form>
+                                            </td>
                                       </tr>
 
                                     <?php endforeach; ?>
@@ -98,17 +109,17 @@ $npp = 10;
                             <div class="text-center">
                                 <div class="pagination">
                                     <ul class="pagination">
-                                        <li><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=1&amp;term=<?php echo $term;?>">First</a></li>
-                                        <li class="arrow"><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $page-1; ?>&term=<?php echo $term;?>">&laquo;</a></li>
+                                        <li><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=1">First</a></li>
+                                        <li class="arrow"><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $page-1; ?>">&laquo;</a></li>
                                         <?php
                                         for($i=1; $i<=$total_pages;$i++):
                                             if($i-5<=$page && $i+5>=$page):
                                                 ?>
                                                 <li <?php if($i==$page){ echo "class=\"current\""; } ?>>
-                                                    <a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $i; ?>&term=<?php echo $term;?>"><?php echo $i; ?></a></li>
+                                                    <a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                                             <?php endif; endfor;?>
-                                        <li class="arrow"><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $page < $total_pages ? $page+1 : $page ; ?>&term=<?php echo $term;?>">&raquo;</a></li>
-                                        <li ><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $totalPages; ?>&term=<?php echo $term;?>">Last</a></li>
+                                        <li class="arrow"><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $page < $total_pages ? $page+1 : $page ; ?>">&raquo;</a></li>
+                                        <li ><a href="<?php echo $_SERVER["PHP_SELF"] ?>?page=<?php echo $total_pages; ?>">Last</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -116,6 +127,18 @@ $npp = 10;
                                 <?php endif; ?>
 
                                 <!-- end of pagination -> third part -->
+
+                                <!-- Part for create new product in db / start -->
+
+                                <?php if(isset($_COOKIE['user_id'])): ?>
+
+                                    <div class="text-center">
+                                        <a href="#new"><button type="button" class="btn btn-info">Add new product</button></a>
+                                    </div>
+
+                                <?php endif; ?>
+
+                                <!-- Part for create new product in db / stop -->
                                 
                             </div>
                         </div>

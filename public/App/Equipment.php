@@ -44,7 +44,7 @@ class Equipment
     public function products()
     {
 
-        $products = $this->_con->prepare('      select c.title, d.name as "category_name", e.name as "media_name" 
+        $products = $this->_con->prepare('      select c.title, c.product_id, c.release_date,  d.name as "category_name", e.name as "media_name" 
                                                 from users as a inner join equipment as b on a.user_id = b.user_id
                                                 inner join products as c on b.product_id = c.product_id
                                                 inner join categories as d on c.category = d.category_id
@@ -57,7 +57,4 @@ class Equipment
 
         return $products = $products->fetchAll(\PDO::FETCH_OBJ);
     }
-
-
-
 }

@@ -87,19 +87,12 @@
 
                                 <!-- Form for registration / end -->
 
-
-                                <!-- Back to index / start -->
-                                <div class="text-center">
-                                    <a href="index.php"><button type="button" class="btn btn-info">Back</button></a>
-                                </div>
-                                <!-- Back to index / stop -->
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <?php include 'menu.php'; ?>
         </div>
     </div>
 </header>

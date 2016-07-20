@@ -1,5 +1,4 @@
 <?php include_once 'config.php'; ?>
-<?php include 'functions.php'; ?>
 
 <!-- Menu Start -->
 <div class="menu_area" id="stick_menu">

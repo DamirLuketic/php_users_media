@@ -49,7 +49,7 @@ create unique index ui2 on media(name);
 /* insert defaul value */
 
 insert into media(name) values
-('CD'), ('DVD'), ('Blu-ray'), ('Vinil');
+('CD'), ('DVD'), ('Blu-ray');
 
 /* table for categories */
 
@@ -77,7 +77,7 @@ media int not null,
 active boolean not null default 1,
 title varchar(50) not null,
 details varchar(250),
-release_date datetime
+release_date date
 );
 
 /* add foreign key for products */
@@ -92,14 +92,14 @@ insert into products(category, media, title) values
 (1, 1, 'Judas Priest - Painkiller'),
 (1, 1, 'Judas Priest - Angel of Retribution'),
 (1, 1, 'WASP - The Last Command'),
-(1, 4, 'WASP - Dying for the World'),
+(1, 3, 'WASP - Dying for the World'),
 (1, 1, 'WASP - Dominator'),
 (1, 1, 'WASP - Babylon'),
 (1, 1, 'Queensrÿche - The Warning'),
 (1, 1, 'Queensrÿche - Rage for Order'),
 (1, 1, 'Queensrÿche - Operation: Mindcrime'),
 (1, 1, 'Queensrÿche - Empire'),
-(1, 4, 'Queensrÿche - Promised Land'),
+(1, 2, 'Queensrÿche - Promised Land'),
 (2, 2, 'A History of Violence'),
 (2, 2, 'Eastern Promises'),
 (2, 2, 'The Road'),
@@ -121,7 +121,8 @@ alter table equipment add foreign key (product_id) references products(product_i
 /* default data for pivot table */
 
 insert into equipment(user_id, product_id) values
-(1,1),(1,2),(1,3),(1,7); 
+(1,1),(1,2),(1,3),(1,4),(1,5),
+(1,6),(1,7),(1,8),(1,9),(1,10),(1,11); 
 
 
 
