@@ -7,7 +7,7 @@ $path = '/php_users_media/public/';
 
 $GLOBALS['path'] = $path;
 
-// db PDO data
+// db PDO data -> local
 $mysql_host = "localhost";
 $mysql_database = "php_users_media";
 $mysql_user = "Luketic";
