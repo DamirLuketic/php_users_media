@@ -10,8 +10,8 @@ $GLOBALS['path'] = $path;
 // db PDO data -> local
 $mysql_host = "localhost";
 $mysql_database = "php_users_media";
-$mysql_user = "Luketic";
-$mysql_password = "Damir";
+$mysql_user = "XXXXXXXXXXXXXX";
+$mysql_password = "XXXXXXXXXXXXXXX";
 try{
 
     $GLOBALS['con'] = new PDO(
